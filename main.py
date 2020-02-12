@@ -5,6 +5,11 @@ from tkinter import *
 #Fichier contenant tout les textes
 from labels import *
 from f_somme import *
+from fonctions import *
+from f_somme import *
+from f_somme import *
+from f_somme import *
+from f_somme import *
 
 
 
