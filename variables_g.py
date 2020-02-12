@@ -1,4 +1,5 @@
-﻿titre_fenetre = "Compléxité mêtre"
+﻿#Fichier contenant tout les textes
+from labels import *
 
-def somme() :
-    return 2
+choix_fonctions = [nom_somme, nom_factoriel, nom_maximum, nom_recherche, nom_tris]
+choix_fonction_selected = nom_somme
