@@ -79,8 +79,6 @@ class MainFrame  :
     #Listener de la combo choix de fonctions
     def choix_fonction(self, *args):
         if self.liste_fonctions.get() == nom_somme :
-            self.panelSomme = PanelSomme(self.f_choix_teste)
+            self.panelSomme = PanelSomme(self.f_choix_teste,self.f_graphique)
 
 f = MainFrame()
-
-
