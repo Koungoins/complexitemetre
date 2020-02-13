@@ -9,23 +9,32 @@ from labels import *
 #Fichiers contenant les variables
 from variables_g import *
 
-def createPanelSomme(parent) :
-  panelPrincipale = PanedWindow(parent, width = 200, height = 400, orient = VERTICAL)
-  panelPrincipale['bg'] = 'blue'
-  parent.add(panelPrincipale)
-  choix1 = Checkbutton(panelPrincipale, text = nom_somme_iteratif)
-  choix1.pack()    
 
-  bouton_valide = Button(panelPrincipale, text = "Valider")
-  bouton_valide.pack()
-  print("Dans la fenetre somme")
+class PanelSomme :
+
     #Listner du bouton choix des fonctions à lancer
-    #def valide_choix() :
-     # print("Bouton appuyé")
-      #f_combo_choix.add(createPanelSomme(f_combo_choix))
+    def valide_choix(self, *args) :
+    	print("Bouton appuyé")
 
-  #bouton_valide['command'] = valide_choix
-  panelPrincipale.pack()
-  parent.pack()
 
-  return panelPrincipale
+
+    def __init__(self, p) :
+        self.parent = p
+        self.panelPrincipale = PanedWindow(self.parent, width = 200, height = 400, orient = VERTICAL)
+        self.panelPrincipale['bg'] = 'blue'
+        #self.parent.add(self.panelPrincipale)
+
+        self.choix3 = Checkbutton(self.panelPrincipale, text = nom_somme_formule)
+        self.choix3.pack()
+
+        self.choix1 = Checkbutton(self.panelPrincipale, text = nom_somme_iteratif)
+        self.choix1.pack()
+
+        self.choix2 = Checkbutton(self.panelPrincipale, text = nom_somme_recursif)
+        self.choix2.pack()
+
+        self.bouton_valide = Button(self.panelPrincipale, text = label_valider)
+        self.bouton_valide.pack()
+
+        self.bouton_valide['command'] = self.valide_choix
+        self.panelPrincipale.pack()

@@ -26,58 +26,61 @@ from fonctions_recherche import *
 from fonctions_tris import *
 
 
-
-
-#Declaration des variables de l'interface
-
-
-#Listener de composants
-#Listener de la combo choix de fonctions
-def choix_fonction(event):  
-  if liste_fonctions.get() == nom_somme :
-    createPanelSomme(f_choix_teste)
+class MainFrame  :
 
 
 
+    #Declaration des variables de l'interface
+    def __init__(self) :
+        #Déclaration de la fenetre
+        self.fenetre = Tk()
+        self.fenetre['bg'] = 'white'
+        self.fenetre.configure(width = 800, height = 800)
+        self.fenetre.title(titre_fenetre)
 
-#Déclaration de la fenetre
-fenetre = Tk()
-fenetre['bg'] = 'white'
-fenetre.configure(width = 800, height = 600)
-fenetre.title(titre_fenetre)
+        #Panel combobox choix fonctions
+        self.f_combo_choix = PanedWindow(self.fenetre, width = 780, height = 50, orient = HORIZONTAL)
+        self.f_combo_choix['bg']='red'
+        self.f_combo_choix.pack(side = TOP, padx = 3, pady = 3)
 
-#Panel combobox choix fonctions
-f_combo_choix = PanedWindow(fenetre, width = 800, height = 50, orient = HORIZONTAL)
-f_combo_choix['bg']='red'
-f_combo_choix.pack(side = TOP, padx = 3, pady = 3)
+        #Nom de la comboBox choix de la fonction
+        self.label_nom_comboBox = Label(self.f_combo_choix, text = l_choix_fonction, padx = 2)
+        self.label_nom_comboBox.pack()
 
-#Nom de la comboBox choix de la fonction
-label_nom_comboBox = Label(f_combo_choix, text = l_choix_fonction, padx = 2)
-label_nom_comboBox.pack(side = LEFT)
-
-#Liste de fonctions choix
-liste_fonctions = ttk.Combobox(f_combo_choix, values = choix_fonctions)
-#liste_fonctions.configure(state='readonly')
-liste_fonctions.pack(side = LEFT)
-#Selection du premier élément de la liste
-liste_fonctions.current(0)
-#Listener pour faire une action lors de la sélection d'un élément dans la liste
-liste_fonctions.bind("<<ComboboxSelected>>", choix_fonction)
+        #Liste de fonctions choix
+        self.liste_fonctions = ttk.Combobox(self.f_combo_choix, values = choix_fonctions)
+        self.liste_fonctions.configure(state='readonly')
+        self.liste_fonctions.pack()
+        #Selection du premier élément de la liste
+        self.liste_fonctions.current(0)
+        #Listener pour faire une action lors de la sélection d'un élément dans la liste
+        self.liste_fonctions.bind("<<ComboboxSelected>>", self.choix_fonction)
 
 
-panelContener = PanedWindow(fenetre, width = 800, height = 400)
 
-#Panel checkBox choix mesure
-f_choix_teste = PanedWindow(panelContener, width = 200, height = 600, orient = VERTICAL)
-f_choix_teste['bg'] = 'grey'
-f_choix_teste.pack(side = LEFT, padx = 3, pady = 3)
+        self.panelContener = PanedWindow(self.fenetre, width = 800, height = 400)
+        self.panelContener['bg']='pink'
+        self.panelContener.pack()
+        #Panel checkBox choix mesure
+        self.f_choix_teste = PanedWindow(self.panelContener, width = 100, height = 400, orient = VERTICAL)
+        self.f_choix_teste['bg'] = 'grey'
+        self.f_choix_teste.pack(side = LEFT, padx = 3, pady = 3)
 
-#Panel graphique
-f_graphique = PanedWindow(panelContener, width = 600, height = 600)
-f_graphique['bg'] = 'yellow'
-f_graphique.pack(side = RIGHT, padx = 3, pady = 3)
+        #Panel graphique
+        self.f_graphique = PanedWindow(self.panelContener, width = 600, height = 400)
+        self.f_graphique['bg'] = 'yellow'
+        self.f_graphique.pack(side = RIGHT, padx = 3, pady = 3)
 
-panelContener.pack(side = BOTTOM)
 
-#Affichage de la fenetre
-fenetre.mainloop()
+        #Affichage de la fenetre
+        self.fenetre.mainloop()
+
+    #Listener de composants
+    #Listener de la combo choix de fonctions
+    def choix_fonction(self, *args):
+        if self.liste_fonctions.get() == nom_somme :
+            self.panelSomme = PanelSomme(self.f_choix_teste)
+
+f = MainFrame()
+
+
