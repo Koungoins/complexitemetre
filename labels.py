@@ -1,4 +1,4 @@
-﻿titre_fenetre = "Compléxité mêtre"
+titre_fenetre = "Compléxité mêtre"
 
 
 nom_somme = "Somme des n premiers entiers"
@@ -8,3 +8,6 @@ nom_maximum = "Trouver le maximum dans une liste d'entiers"
 nom_tris = "Trier une liste d'entiers"
 nom_somme_iteratif = "Somme itératif"
 nom_somme_recursif = "Somme récursif"
+
+
+l_choix_fonction = "Choix fonction : "
