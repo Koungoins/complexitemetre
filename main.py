@@ -65,15 +65,19 @@ liste_fonctions.current(0)
 liste_fonctions.bind("<<ComboboxSelected>>", choix_fonction)
 
 
-#Panel checkBox choix mesure
-f_choix_teste = PanedWindow(fenetre, width = 200, height = 600, orient = VERTICAL)
-f_choix_teste['bg'] = 'grey'
+panelContener = PanedWindow(fenetre, width = 800, height = 400)
 
+#Panel checkBox choix mesure
+f_choix_teste = PanedWindow(panelContener, width = 200, height = 600, orient = VERTICAL)
+f_choix_teste['bg'] = 'grey'
+f_choix_teste.pack(side = LEFT, padx = 3, pady = 3)
 
 #Panel graphique
-f_graphique = PanedWindow(fenetre, width = 400, height = 400)
+f_graphique = PanedWindow(panelContener, width = 600, height = 600)
 f_graphique['bg'] = 'yellow'
 f_graphique.pack(side = RIGHT, padx = 3, pady = 3)
+
+panelContener.pack(side = BOTTOM)
 
 #Affichage de la fenetre
 fenetre.mainloop()

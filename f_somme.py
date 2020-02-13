@@ -12,6 +12,7 @@ from variables_g import *
 def createPanelSomme(parent) :
   panelPrincipale = PanedWindow(parent, width = 200, height = 400, orient = VERTICAL)
   panelPrincipale['bg'] = 'blue'
+  parent.add(panelPrincipale)
   choix1 = Checkbutton(panelPrincipale, text = nom_somme_iteratif)
   choix1.pack()    
 
@@ -25,5 +26,6 @@ def createPanelSomme(parent) :
 
   #bouton_valide['command'] = valide_choix
   panelPrincipale.pack()
+  parent.pack()
 
   return panelPrincipale
