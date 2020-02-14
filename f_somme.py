@@ -13,37 +13,37 @@ from variables_g import *
 
 class PanelSomme :
 
-    #Listner du bouton choix des fonctions à lancer
-    def valide_choix(self, *args) :
-    	if self.chkValue3.get() :
-			print(nom_somme_formule, "Checked")
-		if self.chkValue1.get() :
-			print(nom_somme_iteratif, "Checked")
-		if self.chkValue2.get() :
-			print(nom_somme_recursif, "Checked")
+  #Listner du bouton choix des fonctions à lancer
+  def valide_choix(self, *args) :
+    if self.chkValue3.get() :
+      print(nom_somme_formule)
+    if self.chkValue1.get() :
+      print(nom_somme_iteratif)
+    if self.chkValue2.get() :
+      print(nom_somme_recursif)
 
 
-    def __init__(self, p, g) :
-        self.parent = p
-        self.graphique = g
-        self.matrices = {}
-        self.panelPrincipale = PanedWindow(self.parent, width = 200, height = 400, orient = VERTICAL)
-        self.panelPrincipale['bg'] = 'blue'
+  def __init__(self, p, g) :
+    self.parent = p
+    self.graphique = g
+    self.matrices = {}
+    self.panelPrincipale = PanedWindow(self.parent, width = 200, height = 400, orient = VERTICAL)
+    self.panelPrincipale['bg'] = 'blue'
 
-        self.chkValue3 = BooleanVar()
-        self.choix3 = Checkbutton(self.panelPrincipale, text = nom_somme_formule, variable = self.chkValue3)
-        self.choix3.pack()
+    self.chkValue3 = BooleanVar()
+    self.choix3 = Checkbutton(self.panelPrincipale, text = nom_somme_formule, variable = self.chkValue3)
+    self.choix3.pack()
 
-		self.chkValue1 = BooleanVar()
-        self.choix1 = Checkbutton(self.panelPrincipale, text = nom_somme_iteratif, variable = self.chkValue1)
-        self.choix1.pack()
+    self.chkValue1 = BooleanVar()
+    self.choix1 = Checkbutton(self.panelPrincipale, text = nom_somme_iteratif, variable = self.chkValue1)
+    self.choix1.pack()
 
-		self.chkValue2 = BooleanVar()
-        self.choix2 = Checkbutton(self.panelPrincipale, text = nom_somme_recursif, variable = self.chkValue2)
-        self.choix2.pack()
+    self.chkValue2 = BooleanVar()
+    self.choix2 = Checkbutton(self.panelPrincipale, text = nom_somme_recursif, variable = self.chkValue2)
+    self.choix2.pack()
 
-        self.bouton_valide = Button(self.panelPrincipale, text = label_valider)
-        self.bouton_valide.pack()
+    self.bouton_valide = Button(self.panelPrincipale, text = label_valider)
+    self.bouton_valide.pack()
 
-        self.bouton_valide['command'] = self.valide_choix
-        self.panelPrincipale.pack()
+    self.bouton_valide['command'] = self.valide_choix
+    self.panelPrincipale.pack()
