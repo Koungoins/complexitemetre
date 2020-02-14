@@ -10,11 +10,11 @@ from variables_g import *
 
 
 #Les fenetre
-from f_somme import *
-from f_factoriel import *
-from f_maxi import *
-from f_recherche import *
-from f_tris import *
+from frame_somme import *
+from frame_factoriel import *
+from frame_maxi import *
+from frame_recherche import *
+from frame_tris import *
 
 #Les fonction
 from fonctions_somme import *
