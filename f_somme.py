@@ -1,5 +1,3 @@
-# script spinbox.py
-#(C) Fabrice Sincère
 # coding=utf-8
 from tkinter import *
 

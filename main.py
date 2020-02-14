@@ -1,5 +1,3 @@
-# script spinbox.py
-#(C) Fabrice Sincère
 # coding=utf-8
 from tkinter import *
 from tkinter import ttk
@@ -28,8 +26,6 @@ from fonctions_tris import *
 
 class MainFrame  :
 
-
-
     #Declaration des variables de l'interface
     def __init__(self) :
         #Déclaration de la fenetre
@@ -52,7 +48,7 @@ class MainFrame  :
         self.liste_fonctions.configure(state='readonly')
         self.liste_fonctions.pack()
         #Selection du premier élément de la liste
-        self.liste_fonctions.current(0)
+        #self.liste_fonctions.current(0)
         #Listener pour faire une action lors de la sélection d'un élément dans la liste
         self.liste_fonctions.bind("<<ComboboxSelected>>", self.choix_fonction)
 

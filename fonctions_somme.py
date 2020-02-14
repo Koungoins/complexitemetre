@@ -1,8 +1,7 @@
 
 #Somme avec une formaule
 def sommeFormule(n) :
-    return n*(n+1)/2
-
+    return n * (n + 1) / 2
 
 
 #Somme en iteratif
@@ -20,7 +19,7 @@ def sommeRecursif(n) :
   if n == 0 :
     return 0
   else :
-    return n + sommeRecursif(n-1)
+    return n + sommeRecursif(n - 1)
 
 
 
