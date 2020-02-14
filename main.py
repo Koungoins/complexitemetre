@@ -81,6 +81,4 @@ class MainFrame  :
         if self.liste_fonctions.get() == nom_somme :
             self.panelSomme = PanelSomme(self.f_choix_teste,self.f_graphique)
 
-#f = MainFrame()
-
-print("Toto est là")
+f = MainFrame()

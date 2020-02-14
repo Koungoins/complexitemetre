@@ -11,6 +11,7 @@ def sommeIteratif(n) :
   i = n
   while i >= 0 :
     somme = somme + i
+    i = i -1 
   return somme
 
 
