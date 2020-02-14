@@ -13,18 +13,25 @@ class PanelSomme :
 
   #Listner du bouton choix des fonctions à lancer
   def valide_choix(self, *args) :
-    if self.chkValue3.get() :
-      print(nom_somme_formule)
-    if self.chkValue1.get() :
-      print(nom_somme_iteratif)
-    if self.chkValue2.get() :
-      print(nom_somme_recursif)
+    if self.chkValue3.get() :      
+      self.selection.append(nom_somme_formule)
+    if self.chkValue1.get() :      
+      self.selection.append(nom_somme_iteratif)
+    if self.chkValue2.get() :      
+      self.selection.append(nom_somme_recursif)
+    self.points = runMesure(self.selection, self.data)
+    self.mainF.tracerCourbes(self.points)
+		
 
 
-  def __init__(self, p, g) :
+  def __init__(self, p, g, d, points, mainF) :
     self.parent = p
+    self.mainF = mainF
     self.graphique = g
     self.matrices = {}
+    self.selection = []
+    self.data = d
+    self.points = points
     self.panelPrincipale = PanedWindow(self.parent, width = 200, height = 400, orient = VERTICAL)
     self.panelPrincipale['bg'] = 'blue'
 

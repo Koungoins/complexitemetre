@@ -1,27 +1,33 @@
 # coding=utf-8
+import random
+
 from tkinter import *
 from tkinter import ttk
-
 #Fichier contenant tout les textes
 from labels import *
 
-#Fichiers contenant les variables
+#Fichiers contenant tout les variables
 from variables_g import *
 
 
-#Les fenetre
+#Les fenetres
 from frame_somme import *
 from frame_factoriel import *
 from frame_maxi import *
 from frame_recherche import *
 from frame_tris import *
 
-#Les fonction
+#Les fonctions
 from fonctions_somme import *
 from fonctions_factoriel import *
 from fonctions_maximum import *
 from fonctions_recherche import *
 from fonctions_tris import *
+
+#Liste des données
+dico = {}
+points = {}
+
 
 
 class MainFrame  :
@@ -33,7 +39,7 @@ class MainFrame  :
         self.fenetre['bg'] = 'white'
         self.fenetre.configure(width = 800, height = 800)
         self.fenetre.title(titre_fenetre)
-
+        
         #Panel combobox choix fonctions
         self.f_combo_choix = PanedWindow(self.fenetre, width = 780, height = 50, orient = HORIZONTAL)
         self.f_combo_choix['bg']='red'
@@ -52,8 +58,6 @@ class MainFrame  :
         #Listener pour faire une action lors de la sélection d'un élément dans la liste
         self.liste_fonctions.bind("<<ComboboxSelected>>", self.choix_fonction)
 
-
-
         self.panelContener = PanedWindow(self.fenetre, width = 800, height = 400)
         self.panelContener['bg']='pink'
         self.panelContener.pack()
@@ -67,7 +71,6 @@ class MainFrame  :
         self.f_graphique['bg'] = 'yellow'
         self.f_graphique.pack(side = RIGHT, padx = 3, pady = 3)
 
-
         #Affichage de la fenetre
         self.fenetre.mainloop()
 
@@ -75,6 +78,25 @@ class MainFrame  :
     #Listener de la combo choix de fonctions
     def choix_fonction(self, *args):
         if self.liste_fonctions.get() == nom_somme :
-            self.panelSomme = PanelSomme(self.f_choix_teste,self.f_graphique)
+            self.panelSomme = PanelSomme(self.f_choix_teste,self.f_graphique, dico, points, self)
+    
+    def tracerCourbes(*args) :
+      print("Retour :",args[0])
+
+
+
+
+def genereDataListe() :
+  t1 = [1, 10, 50, 100]#, 500, 1000, 10000, 1000000]
+  data = 1000
+  for taille in t1 :
+    print("Taille:",taille)
+    dico[taille]=[]
+    for i in range(taille) :
+      dico[taille].append(int(random.random()*data))
+    #print(dico)
+  #print("Dico ",dico)
+
+genereDataListe()
 
 f = MainFrame()
