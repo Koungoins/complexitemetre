@@ -24,9 +24,15 @@ from fonctions_maximum import *
 from fonctions_recherche import *
 from fonctions_tris import *
 
-#Liste des données
-dico = {}
-points = {}
+#Import pour le graphique
+import matplotlib
+matplotlib.use('TkAgg')
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
+from matplotlib.figure import Figure
+import numpy as np
+
+
+
 
 
 
@@ -71,6 +77,14 @@ class MainFrame  :
         self.f_graphique['bg'] = 'yellow'
         self.f_graphique.pack(side = RIGHT, padx = 3, pady = 3)
 
+        #Graphiques dans un canvas
+        self._fig = Figure(figsize=(5,4))
+        self._ax = self._fig.add_subplot(111) 
+        self._canvas = FigureCanvasTkAgg(self._fig, master=self.f_graphique)        
+        self._canvas.get_tk_widget().pack( side=TOP, fill=BOTH, expand=1)        
+        self._canvas.draw()
+
+
         #Affichage de la fenetre
         self.fenetre.mainloop()
 
@@ -78,25 +92,33 @@ class MainFrame  :
     #Listener de la combo choix de fonctions
     def choix_fonction(self, *args):
         if self.liste_fonctions.get() == nom_somme :
-            self.panelSomme = PanelSomme(self.f_choix_teste,self.f_graphique, dico, points, self)
+            self.panelSomme = PanelSomme(self.f_choix_teste, dico, points, self)
     
-    def tracerCourbes(*args) :
-      print("Retour :",args[0])
+    def tracerCourbes(self, *args) :
+      print("Retour :",args[0])         
+      d = args[0]      
+      i = 0
+      for nom in d.keys() :
+        self._ax.plot(t1, args[0][nom], colorsPlots[i])
+        i = i + 1
+
+      self._canvas.draw()
 
 
+    def genereDataListe(*args) :
+      
+      data = 1000
+      for taille in t1 :
+        #print("Taille:",taille)
+        dico[taille]=[]
+        for i in range(taille) :
+          dico[taille].append(int(random.random()*data))
+        #print(dico)
+      #print("Dico ",dico)
 
 
-def genereDataListe() :
-  t1 = [1, 10, 50, 100]#, 500, 1000, 10000, 1000000]
-  data = 1000
-  for taille in t1 :
-    print("Taille:",taille)
-    dico[taille]=[]
-    for i in range(taille) :
-      dico[taille].append(int(random.random()*data))
-    #print(dico)
-  #print("Dico ",dico)
-
-genereDataListe()
+    genereDataListe()
+    #genereDataListe(self)
 
 f = MainFrame()
+
