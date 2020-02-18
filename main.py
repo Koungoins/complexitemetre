@@ -67,9 +67,10 @@ class MainFrame  :
         self.panelContener = PanedWindow(self.fenetre, width = 800, height = 400)
         self.panelContener['bg']='pink'
         self.panelContener.pack()
+
         #Panel checkBox choix mesure
         self.f_choix_teste = PanedWindow(self.panelContener, width = 100, height = 400, orient = VERTICAL)
-        self.f_choix_teste['bg'] = 'grey'
+        self.f_choix_teste['bg'] = 'green'
         self.f_choix_teste.pack(side = LEFT, padx = 3, pady = 3)
 
 
@@ -112,6 +113,9 @@ class MainFrame  :
         
         if self.liste_fonctions.get() == nom_factoriel :
             self.panelSomme = PanelFactoriel(self.f_choix_teste, dico, points, self)
+        
+        if self.liste_fonctions.get() == nom_tris :
+            self.panelSomme = PanelTris(self.f_choix_teste, dico, points, self)
     
 
     #Tracer la courbe avec les points

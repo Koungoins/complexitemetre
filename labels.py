@@ -17,5 +17,11 @@ nom_factoriel_recursif = "Factoriel récursif"
 nom_rechercher_naif = "Recherche naïf"
 nom_rechercher_dico = "Recherche dichotomique"
 
+nom_tri_selection = "Tri sélection"
+nom_tri_insertion = "Tri insertion"
+nom_tri_bulle = "Tri bulle"
+nom_tri_rapide = "Tri rapide"
+
+
 label_valider = "Valider"
 l_choix_fonction = "Choix fonction : "
