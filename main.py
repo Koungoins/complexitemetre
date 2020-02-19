@@ -33,9 +33,6 @@ import numpy as np
 
 
 
-
-
-
 class MainFrame  :
 
     #Declaration des variables de l'interface
@@ -45,7 +42,7 @@ class MainFrame  :
         self.fenetre['bg'] = 'white'
         self.fenetre.configure(width = 800, height = 800)
         self.fenetre.title(titre_fenetre)
-        
+
         #Panel combobox choix fonctions
         self.f_combo_choix = PanedWindow(self.fenetre, width = 780, height = 50, orient = HORIZONTAL)
         self.f_combo_choix['bg']='red'
@@ -79,7 +76,7 @@ class MainFrame  :
         self.paneContenerG.pack()
         self.paneContenerG['bg'] = 'black'
 
-        #Panel des options 
+        #Panel des options
         self.paneOptions = PanedWindow(self.paneContenerG, width = 600, height = 150)
         self.paneOptions.pack()
         self.paneOptions['bg'] = 'grey'
@@ -89,13 +86,16 @@ class MainFrame  :
         self.f_graphique['bg'] = 'yellow'
         self.f_graphique.pack(side = RIGHT, padx = 3, pady = 3)
 
+        #self._fig = None
+        #if self._fig != None :
+        #self._fig.clear()
         #Graphiques dans un canvas
         self._fig = Figure(figsize = (5,4))
-        self._ax = self._fig.add_subplot(111) 
-        self._canvas = FigureCanvasTkAgg(self._fig, master = self.f_graphique)        
-        self._canvas.get_tk_widget().pack( side = TOP, fill = BOTH, expand = 1)        
+        self._ax = self._fig.subplots()
+        self._ax.legend(loc = 'best')
+        self._canvas = FigureCanvasTkAgg(self._fig, master = self.f_graphique)
+        self._canvas.get_tk_widget().pack( side = TOP, fill = BOTH, expand = 1)
         self._canvas.draw()
-
 
         #Affichage de la fenetre
         self.fenetre.mainloop()
@@ -103,25 +103,33 @@ class MainFrame  :
     #Listener de composants
     #Listener de la combo choix de fonctions
     #Permet de créer le panel de gauche avec la fonction selectionnée
-    def choix_fonction(self, *args):
-        
+    def choix_fonction(self, *args) :
+
+        #Efface l'encienne fonction dans les choix
+        for widget in self.f_choix_teste.winfo_children() :
+            widget.destroy()
+
         if self.liste_fonctions.get() == nom_somme :
             self.panelSomme = PanelSomme(self.f_choix_teste, dico, points, self)
 
         if self.liste_fonctions.get() == nom_rechercher :
             self.panelSomme = PanelRecherche(self.f_choix_teste, dico, points, self)
-        
+
         if self.liste_fonctions.get() == nom_factoriel :
             self.panelSomme = PanelFactoriel(self.f_choix_teste, dico, points, self)
-        
+
         if self.liste_fonctions.get() == nom_tris :
             self.panelSomme = PanelTris(self.f_choix_teste, dico, points, self)
-    
+
+
+
+
+
 
     #Tracer la courbe avec les points
     def tracerCourbes(self, *args) :
-      print("Retour :",args[0])         
-      d = args[0]      
+      print("Retour :",args[0])
+      d = args[0]
       i = 0
       for nom in d.keys() :
         self._ax.plot(t1, args[0][nom], colorsPlots[i])
@@ -132,7 +140,7 @@ class MainFrame  :
 
     #Génère automatiquement une liste de données
     def genereDataListe(*args) :
-      
+
       data = 1000
       for taille in t1 :
         #print("Taille:",taille)
