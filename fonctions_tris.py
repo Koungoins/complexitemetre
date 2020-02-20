@@ -1,15 +1,17 @@
 from labels import *
+from variables_g import *
 import time
 
 
-def triSelection(tab) :  
+
+def triSelection(tab) :
   for i in range(len(tab)):
     # Trouver le min
     min = i
     for j in range(i+1, len(tab)):
       if tab[min] > tab[j]:
         min = j
-    #deplace le min         
+    #deplace le min
     tmp = tab[i]
     tab[i] = tab[min]
     tab[min] = tmp
@@ -17,19 +19,19 @@ def triSelection(tab) :
 
 
 
-def triInsertion(tab) :  
+def triInsertion(tab) :
   # Parcour de 1 à la taille du tab
-  for i in range(1, len(tab)): 
-    k = tab[i] 
+  for i in range(1, len(tab)):
+    k = tab[i]
     j = i-1
-    while j >= 0 and k < tab[j] : 
-      tab[j + 1] = tab[j] 
+    while j >= 0 and k < tab[j] :
+      tab[j + 1] = tab[j]
       j -= 1
     tab[j + 1] = k
   return ta
-  
 
-def triBulle(tab) : 
+
+def triBulle(tab) :
   n = len(tab)
   # Traverser tous les éléments du tableau
   for i in range(n):
@@ -40,7 +42,7 @@ def triBulle(tab) :
   return tab
 
 
-def triRapide(tab) :    
+def triRapide(tab) :
   i1, i2, n1, n2 = 0, 0, len(t1), len(t2)
   t = []
   while i1 < n1 and i2 < n2 :
@@ -65,30 +67,30 @@ def runMesure(selection, data) :
   e = 10000000
 
   points = {}
-  
-  for sel in selection :    
+  tab = data[dataKey]
+  for sel in selection :
     points[sel] = []
-    for d in data.keys() :
+    for d in tab.keys() :
       #print("Key=",d)
       t = time.time()
-
+      [d]
       if sel == nom_tri_bulle :
-        triBulle(data[d])
+        triBulle(tab[d])
         found = True
       elif sel == nom_tri_selection :
-        triSelection(data[d])
+        triSelection(tab[d])
         found = True
       elif sel == nom_tri_insertion :
-        triSelection(data[d])
+        triSelection(tab[d])
         found = True
       elif sel == nom_tri_rapide :
-        triSelection(data[d])
+        triSelection(tab[d])
         found = True
       else :
         found = False
-      
+
       t = time.time() - t
-      if found :      
+      if found :
         points[sel].append(t)
   #print("Point", points)
   return points

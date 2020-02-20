@@ -1,5 +1,6 @@
 # coding=utf-8
 import random
+import json
 
 from tkinter import *
 from tkinter import ttk
@@ -90,7 +91,7 @@ class MainFrame  :
         #if self._fig != None :
         #self._fig.clear()
         #Graphiques dans un canvas
-        self._fig = Figure(figsize = (5,4))
+        self._fig = Figure(figsize = (5, 4))
         self._ax = self._fig.subplots()
         self._ax.legend(loc = 'best')
         self._canvas = FigureCanvasTkAgg(self._fig, master = self.f_graphique)
@@ -123,38 +124,22 @@ class MainFrame  :
 
 
 
-
-
-
     #Tracer la courbe avec les points
     def tracerCourbes(self, *args) :
-      print("Retour :",args[0])
-      d = args[0]
-      i = 0
-      for nom in d.keys() :
-        self._ax.plot(t1, args[0][nom], colorsPlots[i])
-        i = i + 1
-
-      self._canvas.draw()
-
-
-    #Génère automatiquement une liste de données
-    def genereDataListe(*args) :
-
-      data = 1000
-      for taille in t1 :
-        #print("Taille:",taille)
-        dico[taille] = []
-        for i in range(taille) :
-          #dico[taille].append(int(random.random()*data))
-          dico[taille].append(i + 1)
-        print(dico)
-      #print("Dico ",dico)
+        print("Retour :", args[0])
+        d = args[0]
+        print(d)
+        i = 0
+        for nom in d.keys() :
+            self._ax.plot(t1, d[nom], colorsPlots[i])
+            i = i + 1
+        self._canvas.draw()
 
 
-    genereDataListe()
-    #genereDataListe(self)
-    print(rechercherNaif(10, dico[t1[3]]))
+
+    readDataFile()
+    #genereDataListe()
+    #print(rechercherNaif(10, dico[t1[3]]))
 
 f = MainFrame()
 

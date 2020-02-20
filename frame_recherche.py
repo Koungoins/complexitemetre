@@ -13,18 +13,19 @@ class PanelRecherche :
 
   #Listner du bouton choix des fonctions à lancer
   def valide_choix(self, *args) :
-    if self.chkValue1.get() :      
+    if self.chkValue1.get() :
       self.selection.append(nom_rechercher_naif)
-    if self.chkValue2.get() :      
+    if self.chkValue2.get() :
       self.selection.append(nom_rechercher_dico)
+    print("Data rech:",self.data)
     self.points = runMesure(self.selection, self.data)
     self.mainF.tracerCourbes(self.points)
-		
+
 
 
   def __init__(self, p, d, points, mainF) :
     self.parent = p
-    self.mainF = mainF    
+    self.mainF = mainF
     self.matrices = {}
     self.selection = []
     self.data = d
