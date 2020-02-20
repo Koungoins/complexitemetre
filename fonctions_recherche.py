@@ -1,3 +1,6 @@
+#!/bin/env python
+# coding=utf-8
+
 from labels import *
 from variables_g import *
 import time

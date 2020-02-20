@@ -1,3 +1,6 @@
+#!/bin/env python
+# coding=utf-8
+
 #Fichier contenant tout les textes
 from labels import *
 import json
@@ -5,6 +8,7 @@ import json
 
 choix_fonctions = [nom_somme, nom_factoriel, nom_maximum, nom_rechercher, nom_tris]
 choix_fonction_selected = nom_somme
+
 #Liste des données
 dico = {}
 points = {}

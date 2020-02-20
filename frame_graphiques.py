@@ -1,4 +1,6 @@
+#!/bin/env python
 # coding=utf-8
+
 from tkinter import *
 import matplotlib.pyplot as plt
 import numpy as np

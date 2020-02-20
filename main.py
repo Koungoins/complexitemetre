@@ -1,3 +1,4 @@
+#!/bin/env python
 # coding=utf-8
 import random
 import json
