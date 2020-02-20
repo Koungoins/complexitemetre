@@ -1,4 +1,6 @@
+#!/bin/env python
 # coding=utf-8
+
 from tkinter import *
 
 #Fichier contenant tout les textes
