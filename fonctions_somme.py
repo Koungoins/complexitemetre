@@ -6,6 +6,8 @@ import time
 #Fichiers contenant tout les variables
 import variables_g as varsG
 
+import statistics as stats
+
 
 #Somme avec une formaule
 def sommeFormule(n) :
@@ -33,24 +35,34 @@ def sommeRecursif(n) :
 
 #fonction qui execute les mesures
 def runMesure(selection) :
-  t = 0
+  t = 0  
+  releves = []
   found = False
   varsG.points = {}  
   for sel in selection :    
     varsG.points[sel] = []
-    for d in varsG.keys :      
-      t = time.time()
-      if sel == nom_somme_formule :               
-        sommeFormule(d)
-        found = True
-      elif sel == nom_somme_iteratif :
-        sommeIteratif(d)
-        found = True
-      elif sel == nom_somme_recursif :
-        sommeRecursif(d)
-        found = True
-      
-      t = time.time() - t
-      if found :      
-        varsG.points[sel].append(t)  
+    #repasse plusieurs fois
+    releves = []
+    rep = 0
+    while rep < varsG.passages :
+      for d in varsG.keys :
+        t = time.time()
+        if sel == nom_somme_formule :               
+          sommeFormule(d)
+          found = True
+        elif sel == nom_somme_iteratif :
+          sommeIteratif(d)
+          found = True
+        elif sel == nom_somme_recursif :
+          sommeRecursif(d)
+          found = True
+        
+        t = time.time() - t
+        if found :
+          releves.append(t)
+      rep += 1
+    if found :
+      print("Releves : ", releves)
+      varsG.points[sel].append(stats.mean(releves))
+  #print("Moyenne:", stats.mean(varsG.keys))
     
