@@ -3,6 +3,8 @@
 
 from labels import *
 import time
+#Fichiers contenant tout les variables
+from variables_g import *
 
 #Recherche un element n et renvoi sa position dans la liste  ou -1 s'il n'existe pas dans la liste
 def rechercherNaif(n, liste) :  
@@ -33,17 +35,14 @@ def rechercheDicho(e, tab) :
   
 
 #fonction qui execute les mesures
-def runMesure(selection, data) :
+def runMesure(selection) :
   t = 0
   found = False
   e = 10000000
-
-  points = {}
-  
+  points = {}  
   for sel in selection :    
     points[sel] = []
-    for d in data.keys() :
-      #print("Key=",d)
+    for d in keys :
       t = time.time()
 
       if sel == nom_rechercher_naif :
@@ -52,8 +51,6 @@ def runMesure(selection, data) :
       elif sel == nom_rechercher_dico :
         rechercheDicho(e, data[d])
         found = True
-      else :
-        found = False
       
       t = time.time() - t
       if found :      

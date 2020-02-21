@@ -3,7 +3,8 @@
 
 from labels import *
 import time
-
+#Fichiers contenant tout les variables
+from variables_g import *
 
 def factorielIteratif(n) :
   produit = 1
@@ -24,23 +25,20 @@ def factorielRecursif(n) :
 
 
 #fonction qui execute les mesures
-def runMesure(selection, data) :  
+def runMesure(selection) :  
   t = 0
   found = False
   points = {}  
   for sel in selection :    
     points[sel] = []
-    for d in data.keys() :      
+    for d in keys :      
       t = time.time()
-
       if sel == nom_factoriel_iteratif :             
         factorielIteratif(d)
         found = True
       elif sel == nom_factoriel_recursif :
         factorielRecursif(d)
         found = True
-      else :
-        found = False
       
       t = time.time() - t
       if found :      

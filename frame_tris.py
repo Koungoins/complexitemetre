@@ -23,18 +23,16 @@ class PanelTris :
       self.selection.append(nom_tri_insertion)
     if self.chkValue4.get() :      
       self.selection.append(nom_tri_rapide)
-    self.points = runMesure(self.selection, self.data)
-    self.mainF.tracerCourbes(self.points)
+    runMesure(self.selection)    
+    self.mainF.tracerCourbes()
 		
 
 
-  def __init__(self, p, d, points, mainF) :
+  def __init__(self, p, mainF) :
     self.parent = p
     self.mainF = mainF    
     self.matrices = {}
     self.selection = []
-    self.data = d
-    self.points = points
     self.panelPrincipale = PanedWindow(self.parent, width = 200, height = 400, orient = VERTICAL)
     self.panelPrincipale['bg'] = 'blue'
 

@@ -3,6 +3,8 @@
 
 from labels import *
 import time
+#Fichiers contenant tout les variables
+from variables_g import *
 
 
 def triSelection(tab) :  
@@ -62,7 +64,7 @@ def triRapide(tab) :
 
 
 #fonction qui execute les mesures
-def runMesure(selection, data) :
+def runMesure(selection) :
   t = 0
   found = False
   e = 10000000
@@ -71,7 +73,7 @@ def runMesure(selection, data) :
   
   for sel in selection :    
     points[sel] = []
-    for d in data.keys() :
+    for d in keys :
       #print("Key=",d)
       t = time.time()
 
@@ -87,8 +89,6 @@ def runMesure(selection, data) :
       elif sel == nom_tri_rapide :
         triSelection(data[d])
         found = True
-      else :
-        found = False
       
       t = time.time() - t
       if found :      

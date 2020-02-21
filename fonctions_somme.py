@@ -3,6 +3,8 @@
 
 from labels import *
 import time
+#Fichiers contenant tout les variables
+from variables_g import *
 
 
 #Somme avec une formaule
@@ -30,18 +32,14 @@ def sommeRecursif(n) :
 
 
 #fonction qui execute les mesures
-def runMesure(selection, data) :
+def runMesure(selection) :
   t = 0
   found = False
-
-  points = {}
-  
+  pc = {}  
   for sel in selection :    
-    points[sel] = []
-    for d in data.keys() :
-      #print("Key=",d)
+    pc[sel] = []
+    for d in keys :      
       t = time.time()
-
       if sel == nom_somme_formule :               
         sommeFormule(d)
         found = True
@@ -51,11 +49,9 @@ def runMesure(selection, data) :
       elif sel == nom_somme_recursif :
         sommeRecursif(d)
         found = True
-      else :
-        found = False
       
       t = time.time() - t
       if found :      
-        points[sel].append(t)
-  #print("Point", points)
-  return points
+        pc[sel].append(t)
+  print("Point", points)
+  points = pc  

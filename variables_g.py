@@ -8,7 +8,23 @@ choix_fonctions = [nom_somme, nom_factoriel, nom_maximum, nom_rechercher, nom_tr
 choix_fonction_selected = nom_somme
 
 #Liste des données
-dico = {}
+dico = {'keys':[1, 10, 20, 50, 70, 100, 150, 200, 300, 500,1000, 1500]}
+keys = dico['keys']
+data = {}
 points = {}
-t1 = [1, 10, 20, 50, 70, 100, 150, 200, 300, 500,1000, 1500]
+
 colorsPlots = ['b','g','r','y']
+
+
+#Génère automatiquement une liste de données
+def genereDataListe(*args) :  
+  
+  print("keys:",keys)  
+  
+  for taille in keys :    
+    data[taille] = []
+    for i in range(taille) :
+      #dico[taille].append(int(random.random()*x))
+      data[taille].append(i + 1)  
+  dico['data'] = data
+  #print("Dico ",dico)

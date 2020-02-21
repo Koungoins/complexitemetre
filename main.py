@@ -14,14 +14,14 @@ from variables_g import *
 #Les fenetres
 from frame_somme import *
 from frame_factoriel import *
-from frame_maxi import *
+from frame_fibonacci import *
 from frame_recherche import *
 from frame_tris import *
 
 #Les fonctions
 from fonctions_somme import *
 from fonctions_factoriel import *
-from fonctions_maximum import *
+from fonctions_fibonacci import *
 from fonctions_recherche import *
 from fonctions_tris import *
 
@@ -111,16 +111,16 @@ class MainFrame  :
             widget.destroy()
 
         if self.liste_fonctions.get() == nom_somme :
-            self.panelSomme = PanelSomme(self.f_choix_teste, dico, points, self)
+            self.panelSomme = PanelSomme(self.f_choix_teste,  self)
 
         if self.liste_fonctions.get() == nom_rechercher :
-            self.panelSomme = PanelRecherche(self.f_choix_teste, dico, points, self)
+            self.panelSomme = PanelRecherche(self.f_choix_teste, points, self)
 
         if self.liste_fonctions.get() == nom_factoriel :
-            self.panelSomme = PanelFactoriel(self.f_choix_teste, dico, points, self)
+            self.panelSomme = PanelFactoriel(self.f_choix_teste, points, self)
 
         if self.liste_fonctions.get() == nom_tris :
-            self.panelSomme = PanelTris(self.f_choix_teste, dico, points, self)
+            self.panelSomme = PanelTris(self.f_choix_teste, dico, self)
 
 
 
@@ -129,33 +129,22 @@ class MainFrame  :
 
     #Tracer la courbe avec les points
     def tracerCourbes(self, *args) :
-      print("Retour :",args[0])
-      d = args[0]
+      print("Retour :")      
       i = 0
-      for nom in d.keys() :
-        self._ax.plot(t1, args[0][nom], colorsPlots[i])
-        i = i + 1
+      print("keys", keys)
+      print("points", points)
 
+      for nom in keys :
+        self._ax.plot(keys, points[nom], colorsPlots[i])
+        i = i + 1
       self._canvas.draw()
 
 
-    #Génère automatiquement une liste de données
-    def genereDataListe(*args) :
-
-      data = 1000
-      for taille in t1 :
-        #print("Taille:",taille)
-        dico[taille] = []
-        for i in range(taille) :
-          #dico[taille].append(int(random.random()*data))
-          dico[taille].append(i + 1)
-        print(dico)
-      #print("Dico ",dico)
-
-
     genereDataListe()
+    data = dico['data']
+    print("data:", data)
     #genereDataListe(self)
-    print(rechercherNaif(10, dico[t1[3]]))
+    #print(rechercherNaif(10, dico[t1[3]]))
 
 f = MainFrame()
-
+#genereDataListe()
