@@ -10,7 +10,7 @@ choix_fonctions = [nom_somme, nom_factoriel, nom_maximum, nom_rechercher, nom_tr
 choix_fonction_selected = nom_somme
 
 #Liste des données
-dico = {'keys':[1, 10, 20, 50, 70, 100, 150, 200, 300, 500,1000, 1500]}
+dico = {'keys':[1, 10]}#, 20, 50, 70, 100, 150, 200, 300, 500,1000, 1500]}
 keys = dico['keys']
 data = {}
 points = {}

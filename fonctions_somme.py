@@ -41,10 +41,10 @@ def runMesure(selection) :
   for sel in selection :    
     varsG.points[sel] = []
     #repasse plusieurs fois
-    releves = []
-    rep = 0
-    while rep < varsG.passages :
-      for d in varsG.keys :
+    releves = []       
+    for d in varsG.keys :
+      rep = 0 
+      while rep < varsG.passages :
         t = time.time()
         if sel == nom_somme_formule :               
           sommeFormule(d)
@@ -59,9 +59,9 @@ def runMesure(selection) :
         t = time.time() - t
         if found :
           releves.append(t)
-      rep += 1
-    if found :
-      print("Releves : ", releves)
-      varsG.points[sel].append(stats.mean(releves))
-  #print("Moyenne:", stats.mean(varsG.keys))
+        rep += 1
+
+      if found :
+        moyenne = stats.mean(releves)
+        varsG.points[sel].append(moyenne)
     

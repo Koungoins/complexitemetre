@@ -4,7 +4,7 @@
 from labels import *
 import time
 #Fichiers contenant tout les variables
-from variables_g import *
+import variables_g as varsG
 
 def factorielIteratif(n) :
   produit = 1
