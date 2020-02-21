@@ -2,19 +2,19 @@
 # coding=utf-8
 
 from labels import *
-from variables_g import *
 import time
 
+#Fichiers contenant tout les variables
+import variables_g as varsG
 
 #Recherche un element n et renvoi sa position dans la liste  ou -1 s'il n'existe pas dans la liste
-def rechercherNaif(n, liste) :
-    print("Liste Rechercher:",liste)
-    i = 0
-    while i <= len(liste) - 1 :
-        if liste[i] == n :
-            return i
-        i = i + 1
-    return -1
+def rechercherNaif(n, liste) :  
+  i = 0  
+  while i <= len(liste) - 1 :
+    if liste[i] == n :
+      return i
+    i = i + 1
+  return -1
 
 
 #Recherche dichotomoque d'un élément dans une liste
@@ -36,24 +36,24 @@ def rechercheDicho(e, tab) :
 
 
 #fonction qui execute les mesures
-def runMesure(selection, data) :
-    e = 10000000
-    t = 0
-    found = False
-    points = {}
-    tab = data[abscisses]
-    for sel in selection :
-        tmp = []
-        for d in tab :
-            t = time.time()
-            if sel == nom_rechercher_naif :
-                rechercherNaif(e, tab[d])
-                found = True
-            elif sel == nom_rechercher_dico :
-                rechercheDicho(e, tab[d])
-                found = True
-            t = time.time() - t
-            if found :
-                tmp.append(t)
-    points[sel] = tmp
-    return points
+def runMesure(selection) :
+  t = 0
+  found = False
+  e = 10000000
+  varsG.points = {}  
+  for sel in selection :    
+    varsG.points[sel] = []
+    for d in varsG.keys :
+      t = time.time()
+
+      if sel == nom_rechercher_naif :
+        rechercherNaif(e, varsG.data[d])
+        found = True
+      elif sel == nom_rechercher_dico :
+        rechercheDicho(e, varsG.data[d])
+        found = True
+      
+      t = time.time() - t
+      if found :      
+        varsG.points[sel].append(t)
+  print("Point", varsG.points)  

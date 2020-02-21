@@ -2,7 +2,6 @@
 # coding=utf-8
 
 from labels import *
-from variables_g import *
 import time
 
 
@@ -64,36 +63,34 @@ def triRapide(tab) :
 
 
 #fonction qui execute les mesures
-def runMesure(selection, data) :
+def runMesure(selection) :
   t = 0
   found = False
   e = 10000000
 
   points = {}
-  tab = data[dataKey]
-  for sel in selection :
+  
+  for sel in selection :    
     points[sel] = []
-    for d in tab.keys() :
+    for d in keys :
       #print("Key=",d)
       t = time.time()
-      [d]
+
       if sel == nom_tri_bulle :
-        triBulle(tab[d])
+        triBulle(data[d])
         found = True
       elif sel == nom_tri_selection :
-        triSelection(tab[d])
+        triSelection(data[d])
         found = True
       elif sel == nom_tri_insertion :
-        triSelection(tab[d])
+        triSelection(data[d])
         found = True
       elif sel == nom_tri_rapide :
-        triSelection(tab[d])
+        triSelection(data[d])
         found = True
-      else :
-        found = False
-
+      
       t = time.time() - t
-      if found :
+      if found :      
         points[sel].append(t)
   #print("Point", points)
   return points

@@ -9,20 +9,20 @@ from tkinter import ttk
 from labels import *
 
 #Fichiers contenant tout les variables
-from variables_g import *
+import variables_g as varsG
 
 
 #Les fenetres
 from frame_somme import *
 from frame_factoriel import *
-from frame_maxi import *
+from frame_fibonacci import *
 from frame_recherche import *
 from frame_tris import *
 
 #Les fonctions
 from fonctions_somme import *
 from fonctions_factoriel import *
-from fonctions_maximum import *
+from fonctions_fibonacci import *
 from fonctions_recherche import *
 from fonctions_tris import *
 
@@ -112,35 +112,35 @@ class MainFrame  :
             widget.destroy()
 
         if self.liste_fonctions.get() == nom_somme :
-            self.panelSomme = PanelSomme(self.f_choix_teste, dico, points, self)
+            self.panelSomme = PanelSomme(self.f_choix_teste,  self)
 
         if self.liste_fonctions.get() == nom_rechercher :
-            self.panelSomme = PanelRecherche(self.f_choix_teste, dico, points, self)
+            self.panelSomme = PanelRecherche(self.f_choix_teste, self)
 
         if self.liste_fonctions.get() == nom_factoriel :
-            self.panelSomme = PanelFactoriel(self.f_choix_teste, dico, points, self)
+            self.panelSomme = PanelFactoriel(self.f_choix_teste, self)
 
         if self.liste_fonctions.get() == nom_tris :
-            self.panelSomme = PanelTris(self.f_choix_teste, dico, points, self)
+            self.panelSomme = PanelTris(self.f_choix_teste, self)
 
 
 
     #Tracer la courbe avec les points
     def tracerCourbes(self, *args) :
-        print("Retour :", args[0])
-        d = args[0]
-        print(d)
-        i = 0
-        for nom in d.keys() :
-            self._ax.plot(t1, d[nom], colorsPlots[i])
-            i = i + 1
+      print("Retour :")                  
+      print("points", varsG.points.keys())
+      i = 0
+      for nom in varsG.points.keys() :        
+        self._ax.plot(varsG.keys, varsG.points[nom], varsG.colorsPlots[i])        
         self._canvas.draw()
+        i += 1
 
 
-
-    readDataFile()
-    #genereDataListe()
+    varsG.genereDataListe()
+    varsG.data = varsG.dico['data']
+    print("data:", varsG.data)
+    #genereDataListe(self)
     #print(rechercherNaif(10, dico[t1[3]]))
 
 f = MainFrame()
-
+#varsG.genereDataListe()
