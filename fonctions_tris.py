@@ -3,7 +3,10 @@
 
 from labels import *
 import time
+#Fichiers contenant tout les variables
+import variables_g as varsG
 
+import statistics as stats
 
 
 def triSelection(tab) :
@@ -65,32 +68,38 @@ def triRapide(tab) :
 #fonction qui execute les mesures
 def runMesure(selection) :
   t = 0
+  rep = 0
+  releves = []
   found = False
-  e = 10000000
+  varsG.points = {}
+  for sel in selection :
+    varsG.points[sel] = []
+    #repasse plusieurs fois
+    releves = []
+    for d in varsG.keys :
+        rep = 0
+        #Lance la fonction avec les memes parametres plusieurs fois faire une moyenne
+        while rep < varsG.passages :
+            t = time.time()
+            if sel == nom_tri_bulle :
+                triBulle(varsG.data[d])
+                found = True
+            elif sel == nom_tri_selection :
+                triSelection(varsG.data[d])
+                found = True
+            elif sel == nom_tri_insertion :
+                triSelection(varsG.data[d])
+                found = True
+            elif sel == nom_tri_rapide :
+                triSelection(varsG.data[d])
+                found = True
 
-  points = {}
-  
-  for sel in selection :    
-    points[sel] = []
-    for d in keys :
-      #print("Key=",d)
-      t = time.time()
+            t = time.time() - t
+            if found :
+                releves.append(t)
+            rep += 1
 
-      if sel == nom_tri_bulle :
-        triBulle(data[d])
-        found = True
-      elif sel == nom_tri_selection :
-        triSelection(data[d])
-        found = True
-      elif sel == nom_tri_insertion :
-        triSelection(data[d])
-        found = True
-      elif sel == nom_tri_rapide :
-        triSelection(data[d])
-        found = True
-      
-      t = time.time() - t
-      if found :      
-        points[sel].append(t)
-  #print("Point", points)
-  return points
+        if found :
+            #Moyenne pour des relevés
+            moyenne = stats.mean(releves)
+            varsG.points[sel].append(moyenne)

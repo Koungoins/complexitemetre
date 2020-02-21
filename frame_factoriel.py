@@ -8,26 +8,26 @@ from labels import *
 from fonctions_factoriel import *
 
 #Fichiers contenant les variables
-from variables_g import *
+import variables_g as varsG
 
 
 class PanelFactoriel :
 
   #Listner du bouton choix des fonctions à lancer
   def valide_choix(self, *args) :
-    
-    if self.chkValue1.get() :      
+
+    if self.chkValue1.get() :
       self.selection.append(nom_factoriel_iteratif)
-    if self.chkValue2.get() :      
+    if self.chkValue2.get() :
       self.selection.append(nom_factoriel_recursif)
-    runMesure(self.selection)    
+    runMesure(self.selection)
     self.mainF.tracerCourbes()
-		
+
 
 
   def __init__(self, p, mainF) :
     self.parent = p
-    self.mainF = mainF    
+    self.mainF = mainF
     self.matrices = {}
     self.selection = []
     self.panelPrincipale = PanedWindow(self.parent, width = 200, height = 400, orient = VERTICAL)

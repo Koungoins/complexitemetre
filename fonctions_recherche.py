@@ -3,13 +3,14 @@
 
 from labels import *
 import time
-
 #Fichiers contenant tout les variables
 import variables_g as varsG
 
+import statistics as stats
+
 #Recherche un element n et renvoi sa position dans la liste  ou -1 s'il n'existe pas dans la liste
-def rechercherNaif(n, liste) :  
-  i = 0  
+def rechercherNaif(n, liste) :
+  i = 0
   while i <= len(liste) - 1 :
     if liste[i] == n :
       return i
@@ -38,22 +39,33 @@ def rechercheDicho(e, tab) :
 #fonction qui execute les mesures
 def runMesure(selection) :
   t = 0
+  rep = 0
+  releves = []
   found = False
   e = 10000000
-  varsG.points = {}  
-  for sel in selection :    
+  varsG.points = {}
+  for sel in selection :
     varsG.points[sel] = []
+    #repasse plusieurs fois
+    releves = []
     for d in varsG.keys :
-      t = time.time()
+        rep = 0
+        #Lance la fonction avec les memes parametres plusieurs fois faire une moyenne
+        while rep < varsG.passages :
+            t = time.time()
+            if sel == nom_rechercher_naif :
+                rechercherNaif(e, varsG.data[d])
+                found = True
+            elif sel == nom_rechercher_dico :
+                rechercheDicho(e, varsG.data[d])
+                found = True
 
-      if sel == nom_rechercher_naif :
-        rechercherNaif(e, varsG.data[d])
-        found = True
-      elif sel == nom_rechercher_dico :
-        rechercheDicho(e, varsG.data[d])
-        found = True
-      
-      t = time.time() - t
-      if found :      
-        varsG.points[sel].append(t)
-  print("Point", varsG.points)  
+            t = time.time() - t
+            if found :
+                releves.append(t)
+            rep += 1
+
+        if found :
+            #Moyenne pour des relevés
+            moyenne = stats.mean(releves)
+            varsG.points[sel].append(moyenne)

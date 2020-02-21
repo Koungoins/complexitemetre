@@ -123,23 +123,26 @@ class MainFrame  :
         if self.liste_fonctions.get() == nom_tris :
             self.panelSomme = PanelTris(self.f_choix_teste, self)
 
+        if self.liste_fonctions.get() == nom_fibo :
+            self.panelSomme = PanelFibo(self.f_choix_teste, self)
+
 
 
     #Tracer la courbe avec les points
     def tracerCourbes(self, *args) :
-      print("Retour :")                  
+      print("Retour :")
       print("points keys:", varsG.points.keys())
       print(" keys:", varsG.keys)
       i = 0
-      for nom in varsG.points.keys() :        
-        self._ax.plot(varsG.keys, varsG.points[nom], varsG.colorsPlots[i])        
+      for nom in varsG.points.keys() :
+        self._ax.plot(varsG.keys, varsG.points[nom], varsG.colorsPlots[i])
         self._canvas.draw()
         i += 1
 
 
     varsG.genereDataListe()
     varsG.data = varsG.dico['data']
-    print("data:", varsG.data)
+    #print("data:", varsG.data)
     #genereDataListe(self)
     #print(rechercherNaif(10, dico[t1[3]]))
 

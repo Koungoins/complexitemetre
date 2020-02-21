@@ -34,19 +34,21 @@ def sommeRecursif(n) :
 
 #fonction qui execute les mesures
 def runMesure(selection) :
-  t = 0  
+  t = 0
+  rep = 0
   releves = []
   found = False
-  varsG.points = {}  
-  for sel in selection :    
+  varsG.points = {}
+  for sel in selection :
     varsG.points[sel] = []
     #repasse plusieurs fois
-    releves = []       
+    releves = []
     for d in varsG.keys :
-      rep = 0 
+      rep = 0	  
+	  #Lance la fonction avec les memes parametres plusieurs fois faire une moyenne
       while rep < varsG.passages :
         t = time.time()
-        if sel == nom_somme_formule :               
+        if sel == nom_somme_formule :
           sommeFormule(d)
           found = True
         elif sel == nom_somme_iteratif :
@@ -55,13 +57,13 @@ def runMesure(selection) :
         elif sel == nom_somme_recursif :
           sommeRecursif(d)
           found = True
-        
+
         t = time.time() - t
         if found :
           releves.append(t)
         rep += 1
 
       if found :
+		#Moyenne pour des relevés
         moyenne = stats.mean(releves)
         varsG.points[sel].append(moyenne)
-    
