@@ -128,7 +128,8 @@ class MainFrame  :
     #Tracer la courbe avec les points
     def tracerCourbes(self, *args) :
       print("Retour :")                  
-      print("points", varsG.points.keys())
+      print("points keys:", varsG.points.keys())
+      print(" keys:", varsG.keys)
       i = 0
       for nom in varsG.points.keys() :        
         self._ax.plot(varsG.keys, varsG.points[nom], varsG.colorsPlots[i])        
