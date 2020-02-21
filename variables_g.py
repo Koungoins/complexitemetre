@@ -19,6 +19,20 @@ passages = 5
 
 colorsPlots = ['b','g','r','y']
 
+data_file = 'datafile.txt'
+
+
+def writeDataFile() :
+	with open(data_file,'w') as outfile :
+	   json.dump(dico, outfile)
+
+
+
+def readDataFile() :
+	with open(data_file) as json_file :
+		dico = json.load(json_file)
+		#print("Lire json:",dico)
+
 
 #Génère automatiquement une liste de données
 def genereDataListe(*args) :    
