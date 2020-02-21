@@ -8,7 +8,7 @@ from tkinter import ttk
 from labels import *
 
 #Fichiers contenant tout les variables
-from variables_g import *
+import variables_g as varsG
 
 
 #Les fenetres
@@ -114,13 +114,13 @@ class MainFrame  :
             self.panelSomme = PanelSomme(self.f_choix_teste,  self)
 
         if self.liste_fonctions.get() == nom_rechercher :
-            self.panelSomme = PanelRecherche(self.f_choix_teste, points, self)
+            self.panelSomme = PanelRecherche(self.f_choix_teste, self)
 
         if self.liste_fonctions.get() == nom_factoriel :
-            self.panelSomme = PanelFactoriel(self.f_choix_teste, points, self)
+            self.panelSomme = PanelFactoriel(self.f_choix_teste, self)
 
         if self.liste_fonctions.get() == nom_tris :
-            self.panelSomme = PanelTris(self.f_choix_teste, dico, self)
+            self.panelSomme = PanelTris(self.f_choix_teste, self)
 
 
 
@@ -129,22 +129,20 @@ class MainFrame  :
 
     #Tracer la courbe avec les points
     def tracerCourbes(self, *args) :
-      print("Retour :")      
+      print("Retour :")                  
+      print("points", varsG.points.keys())
       i = 0
-      print("keys", keys)
-      print("points", points)
-
-      for nom in keys :
-        self._ax.plot(keys, points[nom], colorsPlots[i])
-        i = i + 1
-      self._canvas.draw()
+      for nom in varsG.points.keys() :        
+        self._ax.plot(varsG.keys, varsG.points[nom], varsG.colorsPlots[i])        
+        self._canvas.draw()
+        i += 1
 
 
-    genereDataListe()
-    data = dico['data']
-    print("data:", data)
+    varsG.genereDataListe()
+    varsG.data = varsG.dico['data']
+    print("data:", varsG.data)
     #genereDataListe(self)
     #print(rechercherNaif(10, dico[t1[3]]))
 
 f = MainFrame()
-#genereDataListe()
+#varsG.genereDataListe()

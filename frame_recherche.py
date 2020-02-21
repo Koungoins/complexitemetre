@@ -7,26 +7,26 @@ from tkinter import *
 from labels import *
 from fonctions_recherche import *
 
-#Fichiers contenant les variables
-from variables_g import *
+#Fichiers contenant tout les variables
+import variables_g as varsG
 
 
 class PanelRecherche :
 
   #Listner du bouton choix des fonctions à lancer
   def valide_choix(self, *args) :
-    if self.chkValue1.get() :      
+    if self.chkValue1.get() :
       self.selection.append(nom_rechercher_naif)
-    if self.chkValue2.get() :      
+    if self.chkValue2.get() :
       self.selection.append(nom_rechercher_dico)
-    runMesure(self.selection)    
+    runMesure(self.selection)
     self.mainF.tracerCourbes()
 		
 
 
   def __init__(self, p, mainF) :
     self.parent = p
-    self.mainF = mainF    
+    self.mainF = mainF
     self.matrices = {}
     self.selection = []
     self.panelPrincipale = PanedWindow(self.parent, width = 200, height = 400, orient = VERTICAL)

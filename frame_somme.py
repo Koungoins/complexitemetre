@@ -8,7 +8,7 @@ from labels import *
 from fonctions_somme import *
 
 #Fichiers contenant les variables
-from variables_g import *
+import variables_g as varsG
 
 
 class PanelSomme :

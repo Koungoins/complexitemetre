@@ -3,8 +3,9 @@
 
 from labels import *
 import time
+
 #Fichiers contenant tout les variables
-from variables_g import *
+import variables_g as varsG
 
 #Recherche un element n et renvoi sa position dans la liste  ou -1 s'il n'existe pas dans la liste
 def rechercherNaif(n, liste) :  
@@ -39,21 +40,20 @@ def runMesure(selection) :
   t = 0
   found = False
   e = 10000000
-  points = {}  
+  varsG.points = {}  
   for sel in selection :    
-    points[sel] = []
-    for d in keys :
+    varsG.points[sel] = []
+    for d in varsG.keys :
       t = time.time()
 
       if sel == nom_rechercher_naif :
-        rechercherNaif(e, data[d])
+        rechercherNaif(e, varsG.data[d])
         found = True
       elif sel == nom_rechercher_dico :
-        rechercheDicho(e, data[d])
+        rechercheDicho(e, varsG.data[d])
         found = True
       
       t = time.time() - t
       if found :      
-        points[sel].append(t)
-  #print("Point", points)
-  return points
+        varsG.points[sel].append(t)
+  print("Point", varsG.points)  
