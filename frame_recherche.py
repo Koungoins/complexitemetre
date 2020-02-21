@@ -15,13 +15,14 @@ class PanelRecherche :
 
   #Listner du bouton choix des fonctions à lancer
   def valide_choix(self, *args) :
+    self.selection = []
     if self.chkValue1.get() :
       self.selection.append(nom_rechercher_naif)
     if self.chkValue2.get() :
       self.selection.append(nom_rechercher_dico)
     runMesure(self.selection)
     self.mainF.tracerCourbes()
-		
+
 
 
   def __init__(self, p, mainF) :

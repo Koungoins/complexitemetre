@@ -15,6 +15,7 @@ class PanelFibo :
 
   #Listner du bouton choix des fonctions à lancer
   def valide_choix(self, *args) :
+    self.selection = []
     if self.chkValue1.get() :
       self.selection.append(nom_fibo_iteratif)
     if self.chkValue2.get() :

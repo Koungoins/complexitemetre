@@ -15,26 +15,27 @@ class PanelSomme :
 
   #Listner du bouton choix des fonctions à lancer
   def valide_choix(self, *args) :
-    if self.chkValue3.get() :      
+    self.selection = []
+    if self.chkValue3.get() :
       self.selection.append(nom_somme_formule)
-    if self.chkValue1.get() :      
+    if self.chkValue1.get() :
       self.selection.append(nom_somme_iteratif)
-    if self.chkValue2.get() :      
+    if self.chkValue2.get() :
       self.selection.append(nom_somme_recursif)
-    runMesure(self.selection)    
+    runMesure(self.selection)
     self.mainF.tracerCourbes()
-		
+
 
 
   def __init__(self, p, mainF) :
     self.parent = p
-    self.mainF = mainF    
+    self.mainF = mainF
     self.matrices = {}
     self.selection = []
     self.panelPrincipale = PanedWindow(self.parent, width = 200, height = 400, orient = VERTICAL)
     self.panelPrincipale['bg'] = 'blue'
 
-    self.chkValue3 = BooleanVar()    
+    self.chkValue3 = BooleanVar()
     self.choix3 = Checkbutton(self.panelPrincipale, text = nom_somme_formule, variable = self.chkValue3)
     self.choix3.select()
     self.choix3.pack()

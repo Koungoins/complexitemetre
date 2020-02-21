@@ -15,22 +15,23 @@ class PanelTris :
 
   #Listner du bouton choix des fonctions à lancer
   def valide_choix(self, *args) :
-    if self.chkValue1.get() :      
+    self.selection = []
+    if self.chkValue1.get() :
       self.selection.append(nom_tri_bulle)
-    if self.chkValue2.get() :      
+    if self.chkValue2.get() :
       self.selection.append(nom_tri_selection)
-    if self.chkValue3.get() :      
+    if self.chkValue3.get() :
       self.selection.append(nom_tri_insertion)
-    if self.chkValue4.get() :      
+    if self.chkValue4.get() :
       self.selection.append(nom_tri_rapide)
-    runMesure(self.selection)    
+    runMesure(self.selection)
     self.mainF.tracerCourbes()
-		
+
 
 
   def __init__(self, p, mainF) :
     self.parent = p
-    self.mainF = mainF    
+    self.mainF = mainF
     self.matrices = {}
     self.selection = []
     self.panelPrincipale = PanedWindow(self.parent, width = 200, height = 400, orient = VERTICAL)

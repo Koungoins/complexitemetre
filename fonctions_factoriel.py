@@ -32,11 +32,21 @@ def runMesure(selection) :
   rep = 0
   found = False
   varsG.points = {}
+  varsG.keys_utiles = []
   for sel in selection :
     varsG.points[sel] = []
     #repasse plusieurs fois
     releves = []
     for d in varsG.keys :
+        #Evite de faire les clés qui pourraient faire bugger les recursions
+        if mot_recursif in str(selection) and d > varsG.max_recurences :
+            #print("Key trop grand:", d)
+            continue
+
+        #Recupère la clé dans la liste des abscisses
+        if not d in varsG.keys_utiles :
+            varsG.keys_utiles.append(d)
+
         rep = 0
         #Lance la fonction avec les memes parametres plusieurs fois faire une moyenne
         while rep < varsG.passages :

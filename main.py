@@ -132,10 +132,10 @@ class MainFrame  :
     def tracerCourbes(self, *args) :
       print("Retour :")
       print("points keys:", varsG.points.keys())
-      print(" keys:", varsG.keys)
+      print(" keys:", varsG.keys_utiles)
       i = 0
       for nom in varsG.points.keys() :
-        self._ax.plot(varsG.keys, varsG.points[nom], varsG.colorsPlots[i])
+        self._ax.plot(varsG.keys_utiles, varsG.points[nom], varsG.colorsPlots[i])
         self._canvas.draw()
         i += 1
 

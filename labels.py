@@ -28,5 +28,7 @@ nom_tri_rapide = "Tri rapide"
 nom_fibo_iteratif = "Fibonacci itératif"
 nom_fibo_recursif = "Fibonacci récursif"
 
+mot_recursif = "récursif"
+
 label_valider = "Valider"
 l_choix_fonction = "Choix fonction : "
