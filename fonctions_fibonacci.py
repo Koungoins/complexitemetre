@@ -38,7 +38,7 @@ def fiboRecursif(n) :
         return fiboRecursif(n-1)+fiboRecursif(n-2)
 
 #fonction qui execute les mesures
-def runMesure(selection) :
+def mesure(selection) :
     t = 0
     rep = 0
     releves = []
@@ -86,3 +86,9 @@ def runMesure(selection) :
                 moyenne = stats.mean(releves)
                 varsG.points[sel].append(moyenne)
                 print("Revele : ", releves)
+
+
+#fonction qui execute les mesures
+def runMesure(selection) :
+    t = thread.Thread(target = mesure, args = (selection,))
+    t.start()

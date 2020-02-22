@@ -1,8 +1,10 @@
 #!/bin/env python
 # coding=utf-8
 import random
+import logging
 import json
-
+import threading as thread
+import time
 from tkinter import *
 from tkinter import ttk
 #Fichier contenant tout les textes
@@ -141,11 +143,23 @@ class MainFrame  :
         i += 1
 
 
-    varsG.genereDataListe()
-    varsG.data = varsG.dico['data']
-    #print("data:", varsG.data)
-    #genereDataListe(self)
-    #print(rechercherNaif(10, dico[t1[3]]))
+    def genereData() :
+        print("Création de données en cours ....")
+        varsG.genereDataListe()
+        varsG.data = varsG.dico['data']
+        #print("data:", varsG.data)
+        print("Création de données TERMINEE")
+        #genereDataListe(self)
+        #print(rechercherNaif(10, dico[t1[3]]))
 
-f = MainFrame()
-#varsG.genereDataListe()
+
+    threadData = thread.Thread(target = genereData)
+    threadData.start()
+
+#lance la fenetre dans le Thread principal
+if __name__ == "__main__":
+    print("Dans le Thread principal")
+    f = thread.Thread(target = MainFrame)
+    f.start()
+
+    #varsG.genereDataListe()

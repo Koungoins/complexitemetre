@@ -3,6 +3,7 @@
 
 from labels import *
 import time
+import threading as thread
 #Fichiers contenant tout les variables
 import variables_g as varsG
 
@@ -32,8 +33,8 @@ def sommeRecursif(n) :
     return n + sommeRecursif(n - 1)
 
 
-#fonction qui execute les mesures
-def runMesure(selection) :
+def mesure(selection) :
+    print("Selection somme",selection)
     t = 0
     rep = 0
     releves = []
@@ -78,3 +79,9 @@ def runMesure(selection) :
                 #Moyenne pour des relevés
                 moyenne = stats.mean(releves)
                 varsG.points[sel].append(moyenne)
+
+
+#fonction qui execute les mesures
+def runMesure(selection) :
+    t = thread.Thread(target = mesure, args = (selection,))
+    t.start()

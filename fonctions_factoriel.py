@@ -27,7 +27,7 @@ def factorielRecursif(n) :
 
 
 #fonction qui execute les mesures
-def runMesure(selection) :
+def mesure(selection) :
   t = 0
   rep = 0
   varsG.points = {}
@@ -67,3 +67,9 @@ def runMesure(selection) :
 		  #Moyenne pour des relevés
             moyenne = stats.mean(releves)
             varsG.points[sel].append(moyenne)
+
+
+#fonction qui execute les mesures
+def runMesure(selection) :
+    t = thread.Thread(target = mesure, args = (selection,))
+    t.start()

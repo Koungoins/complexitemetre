@@ -4,6 +4,8 @@
 #Fichier contenant tout les textes
 from labels import *
 import json
+import threading
+import time
 
 
 choix_fonctions = [nom_somme, nom_factoriel, nom_rechercher, nom_tris, nom_fibo]
@@ -41,13 +43,15 @@ def readDataFile() :
 
 #Génère automatiquement une liste de données
 def genereDataListe(*args) :
-  for taille in keys :
-    data[taille] = []
-    for i in range(taille) :
-      #dico[taille].append(int(random.random()*x))
-      data[taille].append(i + 1)
-  dico['data'] = data
-  writeDataFile()
+    data = {}
+    for taille in keys :
+        data[taille] = []
+        for i in range(taille) :
+          #dico[taille].append(int(random.random()*x))
+          data[taille].append(i + 1)
+    dico['data'] = data
+    writeDataFile()
+    data = dico['data']
 
 
 
