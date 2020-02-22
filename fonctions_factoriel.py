@@ -30,7 +30,6 @@ def factorielRecursif(n) :
 def runMesure(selection) :
   t = 0
   rep = 0
-
   varsG.points = {}
   varsG.keys_utiles = []
   for sel in selection :

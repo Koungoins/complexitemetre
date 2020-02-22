@@ -40,11 +40,10 @@ def rechercheDicho(e, tab) :
 def runMesure(selection) :
   t = 0
   rep = 0
-  releves = []
-  found = False
-  e = 10000000
   varsG.points = {}
+  varsG.keys_utiles = varsG.keys
   for sel in selection :
+    found = False
     varsG.points[sel] = []
     #repasse plusieurs fois
     releves = []
@@ -54,10 +53,10 @@ def runMesure(selection) :
         while rep < varsG.passages :
             t = time.time()
             if sel == nom_rechercher_naif :
-                rechercherNaif(e, varsG.data[d])
+                rechercherNaif(varsG.element, varsG.data[d])
                 found = True
             elif sel == nom_rechercher_dico :
-                rechercheDicho(e, varsG.data[d])
+                rechercheDicho(varsG.element, varsG.data[d])
                 found = True
 
             t = time.time() - t

@@ -39,7 +39,6 @@ def fiboRecursif(n) :
 
 #fonction qui execute les mesures
 def runMesure(selection) :
-    print("Dans mesure")
     t = 0
     rep = 0
     releves = []
