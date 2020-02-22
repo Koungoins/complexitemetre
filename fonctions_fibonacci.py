@@ -1,11 +1,13 @@
-from labels import *
-from variables_g import *
-import time
 #!/bin/env python
 # coding=utf-8
+from labels import *
+from variables_g import *
+import threading as thread
+import time
+
 
 from labels import *
-import time
+
 #Fichiers contenant tout les variables
 import variables_g as varsG
 
@@ -38,7 +40,7 @@ def fiboRecursif(n) :
         return fiboRecursif(n-1)+fiboRecursif(n-2)
 
 #fonction qui execute les mesures
-def mesure(selection) :
+def runMesure(selection) :
     t = 0
     rep = 0
     releves = []
@@ -63,16 +65,11 @@ def mesure(selection) :
             rep = 0
             #Lance la fonction avec les memes parametres plusieurs fois faire une moyenne
             while rep < varsG.passages :
-                print("Passage:", rep)
-                print("Entier :", d)
-                print("boucle")
                 t = time.time()
-                if sel == nom_fibo_iteratif :
-                    print("nom_fibo_iteratif")
+                if sel == nom_fibo_iteratif :                    
                     fiboIteratif(d)
                     found = True
-                elif sel == nom_fibo_recursif :
-                    print("nom_fibo_recursif")
+                elif sel == nom_fibo_recursif :                    
                     fiboRecursif(d)
                     found = True
 
@@ -85,10 +82,9 @@ def mesure(selection) :
                 #Moyenne pour des relevés
                 moyenne = stats.mean(releves)
                 varsG.points[sel].append(moyenne)
-                print("Revele : ", releves)
 
 
 #fonction qui execute les mesures
-def runMesure(selection) :
-    t = thread.Thread(target = mesure, args = (selection,))
-    t.start()
+#def runMesure(selection) :
+ #   t = thread.Thread(target = mesure, args = (selection,))
+  #  t.start()

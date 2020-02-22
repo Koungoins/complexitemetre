@@ -2,6 +2,7 @@
 # coding=utf-8
 
 from labels import *
+import threading as thread
 import time
 #Fichiers contenant tout les variables
 import variables_g as varsG
@@ -37,7 +38,7 @@ def rechercheDicho(e, tab) :
 
 
 #fonction qui execute les mesures
-def mesure(selection) :
+def runMesure(selection) :
   t = 0
   rep = 0
   varsG.points = {}
@@ -70,6 +71,6 @@ def mesure(selection) :
             varsG.points[sel].append(moyenne)
 
 #fonction qui execute les mesures
-def runMesure(selection) :
-    t = thread.Thread(target = mesure, args = (selection,))
-    t.start()
+#def runMesure(selection) :
+ #   t = thread.Thread(target = mesure, args = (selection,))
+  #  t.start()

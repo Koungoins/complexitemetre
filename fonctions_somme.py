@@ -33,7 +33,7 @@ def sommeRecursif(n) :
     return n + sommeRecursif(n - 1)
 
 
-def mesure(selection) :
+def runMesure(selection) :
     print("Selection somme",selection)
     t = 0
     rep = 0
@@ -82,6 +82,6 @@ def mesure(selection) :
 
 
 #fonction qui execute les mesures
-def runMesure(selection) :
-    t = thread.Thread(target = mesure, args = (selection,))
-    t.start()
+#def runMesure(selection) :
+ #   t = thread.Thread(target = mesure, args = (selection,))
+  #  t.start()

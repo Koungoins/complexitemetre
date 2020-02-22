@@ -2,6 +2,7 @@
 # coding=utf-8
 
 from labels import *
+import threading as thread
 import time
 #Fichiers contenant tout les variables
 import variables_g as varsG
@@ -27,7 +28,8 @@ def factorielRecursif(n) :
 
 
 #fonction qui execute les mesures
-def mesure(selection) :
+def runMesure(selection) :
+  print("Selection somme:",selection)
   t = 0
   rep = 0
   varsG.points = {}
@@ -37,7 +39,8 @@ def mesure(selection) :
     varsG.points[sel] = []
     #repasse plusieurs fois
     releves = []
-    for d in varsG.keys :
+    print("Key run:", sel)
+    for d in varsG.keys :        
         #Evite de faire les clés qui pourraient faire bugger les recursions
         if mot_recursif in str(selection) and d > varsG.max_recurences :
             #print("Key trop grand:", d)
@@ -64,12 +67,12 @@ def mesure(selection) :
             rep += 1
 
         if found :
-		  #Moyenne pour des relevés
+		        #Moyenne pour des relevés
             moyenne = stats.mean(releves)
             varsG.points[sel].append(moyenne)
 
 
 #fonction qui execute les mesures
-def runMesure(selection) :
-    t = thread.Thread(target = mesure, args = (selection,))
-    t.start()
+#def runMesure(selection) :
+ #   t = thread.Thread(target = mesure, args = (selection,))
+  #  t.start()
