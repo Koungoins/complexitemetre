@@ -5,7 +5,7 @@ from tkinter import *
 
 #Fichier contenant tout les textes
 from labels import *
-from fonctions_somme import *
+from fonctions_fibonacci import *
 
 #Fichiers contenant les variables
 import variables_g as varsG
