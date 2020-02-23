@@ -32,3 +32,6 @@ mot_recursif = "récursif"
 
 label_valider = "Valider"
 l_choix_fonction = "Choix fonction : "
+
+xlabel = 'Taille des données en entrée'
+ylabel = 'Temps moyen d\'exécution en ms'

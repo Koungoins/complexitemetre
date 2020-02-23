@@ -78,7 +78,7 @@ def runMesure(selection) :
             if found :
                 #Moyenne pour des relevés
                 moyenne = stats.mean(releves)
-                varsG.points[sel].append(moyenne)
+                varsG.points[sel].append(moyenne*varsG.millisec)
 
 
 #fonction qui execute les mesures

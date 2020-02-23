@@ -40,7 +40,7 @@ def runMesure(selection) :
     #repasse plusieurs fois
     releves = []
     print("Key run:", sel)
-    for d in varsG.keys :        
+    for d in varsG.keys :
         #Evite de faire les clés qui pourraient faire bugger les recursions
         if mot_recursif in str(selection) and d > varsG.max_recurences :
             #print("Key trop grand:", d)
@@ -69,7 +69,7 @@ def runMesure(selection) :
         if found :
 		        #Moyenne pour des relevés
             moyenne = stats.mean(releves)
-            varsG.points[sel].append(moyenne)
+            varsG.points[sel].append(moyenne*varsG.millisec)
 
 
 #fonction qui execute les mesures

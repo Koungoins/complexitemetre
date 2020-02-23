@@ -14,7 +14,7 @@ from variables_g import *
 
 
 class PanelGraphiques :
-		
+
 
 
   def __init__(self, p, pointsX, pointsY, mainF) :
@@ -26,5 +26,5 @@ class PanelGraphiques :
     self.data = d
     self.points = points
     self.panelPrincipale = PanedWindow(self.parent, width = 200, height = 400, orient = VERTICAL)
-    self.panelPrincipale['bg'] = 'green'
+    self.panelPrincipale['bg'] = 'white'
     self.panelPrincipale.pack()

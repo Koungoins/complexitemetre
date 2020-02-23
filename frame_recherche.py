@@ -31,16 +31,18 @@ class PanelRecherche :
     self.matrices = {}
     self.selection = []
     self.panelPrincipale = PanedWindow(self.parent, width = 200, height = 400, orient = VERTICAL)
-    self.panelPrincipale['bg'] = 'blue'
+    self.panelPrincipale['bg'] = 'white'
 
     self.chkValue1 = BooleanVar()
     self.choix1 = Checkbutton(self.panelPrincipale, text = nom_rechercher_naif, variable = self.chkValue1)
     self.choix1.select()
+    self.choix1['bg'] = 'white'
     self.choix1.pack()
 
     self.chkValue2 = BooleanVar()
     self.choix2 = Checkbutton(self.panelPrincipale, text = nom_rechercher_dico, variable = self.chkValue2)
     self.choix2.select()
+    self.choix2['bg'] = 'white'
     self.choix2.pack()
 
     self.bouton_valide = Button(self.panelPrincipale, text = label_valider)

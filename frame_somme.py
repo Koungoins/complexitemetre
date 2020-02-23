@@ -33,21 +33,24 @@ class PanelSomme :
     self.matrices = {}
     self.selection = []
     self.panelPrincipale = PanedWindow(self.parent, width = 200, height = 400, orient = VERTICAL)
-    self.panelPrincipale['bg'] = 'blue'
+    self.panelPrincipale['bg'] = 'white'
 
     self.chkValue3 = BooleanVar()
     self.choix3 = Checkbutton(self.panelPrincipale, text = nom_somme_formule, variable = self.chkValue3)
     self.choix3.select()
+    self.choix3['bg'] = 'white'
     self.choix3.pack()
 
     self.chkValue1 = BooleanVar()
     self.choix1 = Checkbutton(self.panelPrincipale, text = nom_somme_iteratif, variable = self.chkValue1)
     self.choix1.select()
+    self.choix1['bg'] = 'white'
     self.choix1.pack()
 
     self.chkValue2 = BooleanVar()
     self.choix2 = Checkbutton(self.panelPrincipale, text = nom_somme_recursif, variable = self.chkValue2)
     self.choix2.select()
+    self.choix2['bg'] = 'white'
     self.choix2.pack()
 
     self.bouton_valide = Button(self.panelPrincipale, text = label_valider)

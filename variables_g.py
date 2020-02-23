@@ -20,9 +20,11 @@ data = {}
 points = {}
 element = 10000000
 max_recurences = 970
+millisec = 1000
+fonction_selected = None
 
 #Nombre de passages sur la même fonction pour avoir un temps moyenne excecution
-passages = 1
+passages = 5
 
 colorsPlots = ['b','g','r','y']
 

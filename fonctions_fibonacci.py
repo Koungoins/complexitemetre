@@ -66,10 +66,10 @@ def runMesure(selection) :
             #Lance la fonction avec les memes parametres plusieurs fois faire une moyenne
             while rep < varsG.passages :
                 t = time.time()
-                if sel == nom_fibo_iteratif :                    
+                if sel == nom_fibo_iteratif :
                     fiboIteratif(d)
                     found = True
-                elif sel == nom_fibo_recursif :                    
+                elif sel == nom_fibo_recursif :
                     fiboRecursif(d)
                     found = True
 
@@ -81,7 +81,7 @@ def runMesure(selection) :
             if found :
                 #Moyenne pour des relevés
                 moyenne = stats.mean(releves)
-                varsG.points[sel].append(moyenne)
+                varsG.points[sel].append(moyenne*varsG.millisec)
 
 
 #fonction qui execute les mesures
