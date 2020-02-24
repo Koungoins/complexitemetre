@@ -79,9 +79,3 @@ def runMesure(selection) :
                 #Moyenne pour des relevés
                 moyenne = stats.mean(releves)
                 varsG.points[sel].append(moyenne*varsG.millisec)
-
-
-#fonction qui execute les mesures
-#def runMesure(selection) :
- #   t = thread.Thread(target = mesure, args = (selection,))
-  #  t.start()

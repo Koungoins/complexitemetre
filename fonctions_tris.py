@@ -108,7 +108,7 @@ def fusion(a, b) :
             c.append(a[i])
     return c
 
-def triRapide(a) : # il síagit ici díune fonction renvoyant la liste des ÈlÈments de a triÈs
+def triFusion(a) : # il síagit ici díune fonction renvoyant la liste des ÈlÈments de a triÈs
     print("ici 11")
     n = len(a)
     if n <= 1 :
@@ -120,46 +120,50 @@ def triRapide(a) : # il síagit ici díune fonction renvoyant la liste des ÈlÈ
 
 #fonction qui execute les mesures
 def runMesure(selection) :
-  t = 0
-  rep = 0
-  varsG.points = {}
-  varsG.keys_utiles = varsG.keys
-  for sel in selection :
-    print
-    found = False
-    varsG.points[sel] = []
-    #repasse plusieurs fois
+    t = 0
+    rep = 0
     releves = []
-    for d in varsG.keys :
-        rep = 0
-        #Lance la fonction avec les memes parametres plusieurs fois faire une moyenne
-        while rep < varsG.passages :
-            t = time.time()
-            if sel == nom_tri_bulle :
-                triBulle(varsG.data[d])
-                found = True
-            elif sel == nom_tri_selection :
-                triSelection(varsG.data[d])
-                found = True
-            elif sel == nom_tri_insertion :
-                triInsertion(varsG.data[d])
-                found = True
-            elif sel == nom_tri_rapide :
-                print("Debut fonction")
-                triRapide(varsG.data[d])
-                found = True
+    found = False
+    varsG.points = {}
+    varsG.keys_utiles = []
+    for sel in selection :
+        found = False
+        varsG.points[sel] = []
+        #repasse plusieurs fois
+        releves = []
+        for d in varsG.keys :
+            #Evite de faire les clés qui pourraient faire bugger les recursions
+            if mot_recursif in str(selection) and d > varsG.max_recurences :
+                print("Key trop grand:", d)
+                continue
 
-            t = time.time() - t
+            #Recupère la clé dans la liste des abscisses
+            if not d in varsG.keys_utiles :
+                varsG.keys_utiles.append(d)
+
+            rep = 0
+            #Lance la fonction avec les memes parametres plusieurs fois faire une moyenne
+            while rep < varsG.passages :
+                t = time.time()
+                if sel == nom_tri_bulle :
+                    triBulle(varsG.data[d])
+                    found = True
+                elif sel == nom_tri_selection :
+                    triSelection(varsG.data[d])
+                    found = True
+                elif sel == nom_tri_insertion :
+                    triInsertion(varsG.data[d])
+                    found = True
+                elif sel == nom_tri_rapide :
+                    triFusion(varsG.data[d])
+                    found = True
+
+                t = time.time() - t
+                if found :
+                    releves.append(t)
+                rep += 1
+
             if found :
-                releves.append(t)
-            rep += 1
-
-        if found :
-            #Moyenne pour des relevés
-            moyenne = stats.mean(releves)
-            varsG.points[sel].append(moyenne*varsG.millisec)
-
-#fonction qui execute les mesures
-#def runMesure(selection) :
- #   t = thread.Thread(target = mesure, args = (selection,))
-  #  t.start()
+                #Moyenne pour des relevés
+                moyenne = stats.mean(releves)
+                varsG.points[sel].append(moyenne*varsG.millisec)
