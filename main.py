@@ -120,7 +120,7 @@ class MainFrame  :
             widget.destroy()
 
         if self.liste_fonctions.get() == nom_somme :
-            varsG.onction_selected = nom_somme
+            varsG.fonction_selected = nom_somme
             self.panelSomme = PanelSomme(self.f_choix_teste,  self)
 
         if self.liste_fonctions.get() == nom_rechercher :
@@ -157,6 +157,8 @@ class MainFrame  :
         i += 1
       self._ax.set_title(varsG.fonction_selected)
       self._ax.legend(varsG.points.keys())
+      self._ax.set_xlabel(varsG.xlabel)
+      self._ax.set_ylabel(varsG.ylabel)
       self._canvas.draw()
 
 
